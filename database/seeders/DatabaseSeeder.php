@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,5 +17,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(SettingDatabaseSeeder::class);
         $this->call(AdminDatabaseSeeder::class);
+        $this->call(CategoryDatabaseSeeder::class);
     }
 }
