@@ -23,11 +23,17 @@ Route::group([
 Route::group(['namespace' => 'Dashboard', 'middleware' => 'auth:admin' , 'prefix'=>'admin'], function () {
     
    Route::get('/','DashboardController@index')->name('admin.dashboard'); // the first page admin visits if auth;
-    
+   Route::get('logout','LoginController@logout')->name('admin.logout'); 
+
     Route::group(['prefix' => 'settings'],function(){
       
       Route::get('shipping-methods/{type}','SettingsController@editShippingMethods')-> name('edit.shippings.methods');
       Route::PUT('shipping-methods/{id}','SettingsController@updateShippingMethods')-> name('update.shippings.methods');
+    });
+    Route::group(['prefix' => 'profile'],function(){
+      
+      Route::get('edit','profileController@editProfile')-> name('edit.profile');
+      Route::PUT('update','profileController@updateProfile')-> name('update.profile');
     });
 
  });
@@ -40,5 +46,5 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => 'auth:admin' , 'prefix
  });
 
  
-
+ 
 });
